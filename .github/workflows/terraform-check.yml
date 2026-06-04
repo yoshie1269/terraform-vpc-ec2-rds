@@ -1,0 +1,37 @@
+name:Terraform Check
+
+on:
+	push:
+		branches:
+			- main
+	pull_request:
+		branches:
+			-main
+
+jobs:
+	terraform:
+		runs-on:ubuntu-latest
+
+		env:
+			AWS_REGION:ap-northeast-1
+			AWS_ACCSESS_KEY_ID:${{secrets.AWS_ACCESS_KEY_ID}}
+			AWS_SECRETS_ACCESS_KEY:${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+		steps:
+			- name:Checkout
+			  uses:actions/checkout@v4
+
+			- name:Setup Terraform
+			  uses:hashicorp/setup-terraform@v3
+
+                        - name:Terraform Format Check
+                          uses:terraform fmt -check -recursive
+
+                        - name:Terraform Init
+                          uses:terraform init
+
+                        - name:Terraform Validate
+                          uses:terraform validate
+
+                        - name:Terraform Plan
+                          uses:terrafoem plan
