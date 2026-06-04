@@ -34,7 +34,7 @@ module "compute" {
   source = "./modules/compute"
 
   key_name              = var.key_name
-  public_key_path       = var.public_key_path
+  public_key            = var.public_key
   ami_id                = var.ami_id
   ec2_instance_type     = var.ec2_instance_type
   public_subnet_id      = module.network.public_subnet_id

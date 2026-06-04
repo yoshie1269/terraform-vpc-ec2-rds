@@ -62,8 +62,8 @@ variable "key_name" {
   type        = string
 }
 
-variable "public_key_path" {
-  description = "Path to public key file"
+variable "public_key" {
+  description = "Path key for EC2 key pair"
   type        = string
 }
 
