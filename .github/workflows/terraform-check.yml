@@ -25,13 +25,13 @@ jobs:
 			  uses:hashicorp/setup-terraform@v3
 
                         - name:Terraform Format Check
-                          uses:terraform fmt -check -recursive
+                          run:terraform fmt -check -recursive
 
                         - name:Terraform Init
-                          uses:terraform init
+                          run:terraform init
 
                         - name:Terraform Validate
-                          uses:terraform validate
+                          run:terraform validate
 
                         - name:Terraform Plan
-                          uses:terrafoem plan
+                          run:terrafoem plan
